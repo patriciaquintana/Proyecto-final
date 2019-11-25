@@ -5,6 +5,8 @@ Los paquetes necesarios son:
 
 •	ggplot2
 
+•	knitr
+
 •	formattable
 
 •	rmdformats
