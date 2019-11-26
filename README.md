@@ -10,3 +10,5 @@ Los paquetes necesarios son:
 •	formattable
 
 •	rmdformats
+
+•	devtools
