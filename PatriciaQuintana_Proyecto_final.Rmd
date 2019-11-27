@@ -1,0 +1,162 @@
+---
+title: "Proyecto final"
+author: "Patricia Quintana"
+date: "18/11/2019"
+output: 
+  rmdformats::material:
+    cards: false
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rmdformats)
+library(devtools)
+```
+
+# 1. Expresiones regulares
+
+> En cómputo teórico y teoría de lenguajes formales una expresión regular, o expresión racional, es una secuencia de caracteres que conforma un patrón de búsqueda. También son conocidas como _regex_ o _regexp_, por su contracción de las palabras inglesas _regular expression_. Son principalmente utilizadas para la búsqueda de patrones de cadenas de caracteres u operaciones de sustituciones.
+
+según [Wikipedia](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular)
+
+En este apartado se van a comparar dos páginas webs sobre expresiones regulares:
+
+* [_R-tools_](https://www.r-studio.com/es/Unformat_Help/regularexpressions.html)
+
+* [_RPubs_](http://rpubs.com/ydmarinb/429756)
+
+
+## 1.1 Similitudes
+
+1. Las páginas webs han sido fáciles de encontrar porque han sido de los primeros enlaces que me han salido en la búsqueda en Google.\
+2. En ambos links aparece la definición del término expresión regular.\
+3. La visualización de las webs están definidas estructuralmente.\
+4. Algunos de los tipos de expresiones regulares aparecen en ambas páginas, como por ejemplo:
+
+    + `.` 
+    + `*`
+    + `^`
+    + `$`
+    + `[...]`
+    + `[^...]`
+    +  `\x`
+
+
+## 1.2 Diferencias
+
+1. La página de _R-tools_ contiene información escueta y general, en cambio _RPubs_ tiene una información específica y divide las expresiones según su tipología.\
+2. En cuanto a la estética de las webs, como se ha comentado antes, en ambas páginas se ve muy fácilmente la estructura pero _R-tools_ está menos elaborada que _Rpubs_. Además, la segunda web contiene más información sobre las expresiones regulares.\
+3. Otra clara diferencia es que la web de _Rpubs_ tiene más información y está mejor explicada, un ejemplo es que hay un apartado que enseña como implementarlo en _RStudio_.
+
+
+## 1.3 Conclusión
+
+En mi opinión, la página de **_RPubs_** es mejor ya que contiene más información y de forma más ordenada con los diferentes tipos de expresiones regulares. En cambio, la web **_R-tools_** tiene información muy genérica y visualmente es menos atractiva.
+
+
+# 2. Recursos sobre markdown
+
+> **Markdown** es un lenguaje creado por John Gruber que facilita y simplifica la escritura y lectura de las publicaciones en HTML. En esta sección he decidio coger dos webs y analizarlas por separado:
+
+* <https://es.r4ds.hadley.nz/r-markdown.html>
+
+* <https://commonmark.org/help/tutorial/index.html>
+
+## 2.1 Primera página
+La primera página web es un [libro](https://es.r4ds.hadley.nz/r-markdown.html) que contiene información sobre Rstudio. En el tema 27 trata sobre RMarkdown y sus posibles usos:
+
+  + Introducción\
+  + Rmarkdown básico: explica como usarlo\
+  + Formatear el texto: como poner texto en negrita, cursiva o enumerar\
+  + Bloques de códigos\
+  + Encabezados YALM\
+  + Enunciados de ejercicios para practicar\
+
+## 2.2 Segunda página
+La segunda página se trata de un [tutorial](https://commonmark.org/help/tutorial/index.html) de RMarkdown, explica de forma breve algunos de los posibles recursos y más tarde se convierte en un tutorial interactivo para que el usuario practique, además ofrece _hints_ por si tienes problemas a la hora de resolver los ejercicios.
+
+## 2.3 Conclusión
+Las páginas web explicadas son muy diferentes ya que la primera contiene mucha más información que la segunda y hace un análisis más profundo sobre RMarkdown, en cambio, la segunda página contiene menos información, pero al ser un tutorial interactivo puedes prácticar y te corrige las respuestas, a diferencia que la primera, que sólo aparecen los enunciados de los ejercicios.
+
+# 3. Estudio del data frame _ChickenWeight_
+
+En este apartado vamos a analizar los datos de **_ChickWeight_**, un experimento que observa el efecto de la dieta en el crecimiento temprano de los pollos.
+
+## 3.1 Resumen de la base de datos
+
+
+```{r ChickWeight, echo=FALSE, message=FALSE}
+library(knitr)
+knitr::kable(summary(ChickWeight))
+```
+
+El _dataset_ consta de 578 filas y 4 columnas. En este apartado se hará un resumen sobre las variables y un estudio de los datos con gráficas y una tabla.
+
+### 3.1.1 Las variables.
+
+  1. Weight
+
+  La variable *weight* es un vector numérico que representa el peso de los pollos en gramos.
+
+  2. Time
+
+  La variable *time* es un vector númerico que indica el número de días desde que el pollo nació cuando la medición del peso fue hecha.
+
+  3. Chick
+
+  La variable *chick* un factor ordenado con niveles 18 <... <48 que proporciona un identificador único para el pollo. La ordenación de los niveles agrupa a los pollitos en la misma dieta y los ordena de acuerdo con su peso final (más liviano a más pesado) dentro de la dieta.
+
+  4. Diet
+
+  La variable *diet* es un factor que va desde el nivel 1 hasta el 4 e indica que dieta ha recibido el pollo.
+
++ **Detalles de las variables:**\
+Los pesos corporales de los pollos se midieron al nacer y cada dos días a partir de entonces hasta el día 20. También se midieron el día 21. Hubo cuatro grupos de pollitos con diferentes dietas proteicas.
+
+
+### 3.1.2 Gráficos
+
+En este apartado, se va a estudiar mediante gráficos el cambio del peso según la dieta para ellos hemos representado un gráfico de caja y un diagrama de puntos dividido en facetas.
+
+#### **Gráfico de puntos que estudia la evolución del peso durante el tiempo según el tipo de dieta.**
+
+A continuación, se representa el _gráfico 1_ que está dividido en facetas, cada una representa la dieta que ha recibido el pollo. Como se puede observar, la gráfica que corresponde a la _dieta 3_ es la que alcanza los niveles de peso más altos. En cuanto a la tendecia, se puede observar que en la _dieta 1_ y la _dieta 2_ el crecimiento es más constante, en cambio en la _dieta 3_ y la _dieta 4_ hay cambios pequeños durante el tiempo. El eje x representa el tiempo que tiene el pollo y se ve perfectamente reflejado que cuanto más tiempo de vida tenga el pollo, más peso tendrá.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+ggplot(ChickWeight, aes(x = Time, y = weight, color=Diet)) + geom_point(size = 2) + geom_smooth() + labs(x="Tiempo", y="Peso", title="Gráfico 1", subtitle = "Evolución del peso durante el tiempo (según la dieta utilizada") + theme(
+  panel.background = element_rect(fill = "white", colour = "grey80"),
+  legend.position = "top", legend.key = element_rect(fill = "white", colour = "grey"),
+  axis.line = element_line(size = 1, colour = "grey80")) + facet_wrap(~ Diet) + scale_color_brewer(palette="Set3")
+```
+
+#### **Gráfico de caja que analiza la evolución del peso según la dieta establecida.**
+
+Abajo se representa un gráfico de caja en el que se comparan dos variables (_peso_ y _dieta_); mostrando las distribuciones que corresponden a la variable _peso_ y cada serie corresponde a una categoría de la varibale _dieta_. Puede observarse que la _dieta 3_ tiene una distribucion mayor, es decir que tiene mayor dispersión y presenta un peso promedio (mediana) igual que la _dieta 4_. Además, se puede observar que en las _dietas 1_ y _2_ hay _outliers_ representados por una estrella, es decir, datos atípicos que están muy alejados de otros datos. Si comparamos las cajas de las dietas se puede observar que la _dieta 3_ es la más eficiente a la hora de engordar a los animales, y la _dieta 1_ la que menos.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+ggplot(ChickWeight, aes(x = Diet, y = weight, color=Diet)) + geom_boxplot(notch=TRUE, notchwidth = 0.8, outlier.colour="lightblue", outlier.shape=8, outlier.size=3) + 
+  geom_smooth()+labs(x = "Dieta", y = "Peso (gramos)", title =  "Gráfico 2", subtitle="Relación entre la dieta aplicada y el peso") + 
+  theme_minimal(base_size = 14) + theme(panel.background = element_rect(fill = "white", colour = "grey80"), 
+                                        legend.position = "bottom",    legend.key = element_rect(fill = "white", colour = "grey"),
+  axis.line = element_line(size = 1, colour = "grey80")) + scale_color_brewer(palette="Set2")
+```
+
+### 3.1.3 Tabla
+
+```{r results= "asis", echo=FALSE, message=FALSE}
+library(formattable)
+ChickWeight1<- tail(ChickWeight[order(ChickWeight$weight),])
+formattable(ChickWeight1, row.names = FALSE, 
+            caption = "Tabla 1: Representación de `ChickWeight1` con `formattable()`", 
+            align =c("c", "c", "c", "c"), col.names = c("Peso","Tiempo","Pollos","Dieta"),
+            list (Diet = (color_text("black","coral3"))))
+```
+
+Por último, la _Tabla 1_ muestra los datos _ChickenWeight1_, este _data frame_ ordena los datos de _ChickenWeight_ según el peso. En la tabla se ha recogido los sujetos con más peso, como se puede observar la dieta más efectiva para engordar a los pollos es _Diet 3_, también podemos deducir por la tabla que las variables _time_ y _weight_ están relacionadas positivamente ya que a más edad, los pollos pesan más.
+
