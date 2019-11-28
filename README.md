@@ -12,3 +12,6 @@ Los paquetes necesarios son:
 •	rmdformats
 
 •	devtools
+
+
+Para ejecutar por consola utilizar: https://github.com/patriciaquintana/Proyecto-final_PatriciaQuintana.git
